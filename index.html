@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fuck You Hard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+
+    <br><br>
+    <button onclick="window.open('/new')">New Instance</button> <br><br>
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Status</th>
+                <th>Current url</th>
+                <th>Screenshot</th>
+                <th>Task</th>
+                <th>Logs</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for key ,ins in instances.items() %}
+            <td>{{ ins.label }}</td>
+            <td>{{ ins.status }}</td>
+            <td>{{ ins.driver.current_url }}</td>
+            <td><button onclick="show_img('{{ ins.id }}')">show image</button></td>
+            <td> <button id="task_{{ins.id}}" onclick="task('{{ ins.id }}')">Send Task</button></td>
+            <td> <button onclick="show_logs('{{ ins.id }}')">Show Logs</button></td>
+            <td><button onclick="window.open('/quit/{{ins.id}}');location.reload();">Quit</button></td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
+    <script>
+
+        function task(pos) {
+            Swal.fire({
+                title: 'Login Form',
+                html: `  <textarea id="nums" rows="4" cols="50">+918094011162</textarea>
+        <textarea id="msg" rows="4" cols="50">Greetings from Airport Enclave !</textarea>
+        <input type="text" id="file" class="swal2-input" placeholder="ad.mp4 (flask_app folder)">`,
+
+                confirmButtonText: 'Send Task',
+                focusConfirm: false,
+                preConfirm: () => {
+                    var nums = Swal.getPopup().querySelector('#nums').value
+                    var msg = Swal.getPopup().querySelector('#msg').value
+                    var file = Swal.getPopup().querySelector('#file').value
+
+                    $.post('/startmsg', {
+                        nums: nums,
+                        msg: msg,
+                        file: file,
+                        pos: pos
+                    });
+                    return true;
+                }
+
+            }).then((result) => {
+
+
+                console.log("done");
+            });
+
+        }
+
+
+        function show_img(pos) {
+            $.get('/img/' + pos,  // url
+                function (data, textStatus, jqXHR) {  // success callback
+                    Swal.fire({
+                        title: "screenshot",
+                        html: data,
+
+                    })
+                });
+        }
+
+        function show_logs(pos) {
+            $.get('/logs/' + pos,  // url
+                function (data, textStatus, jqXHR) {  // success callback
+                    Swal.fire({
+                        title: "loggs",
+                        html: data,
+
+                    })
+                });
+        }
+
+    </script>
+</body>
+
+</html>

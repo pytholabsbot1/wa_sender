@@ -34,7 +34,7 @@ class WaSender:
         )
         options.add_argument("user-agent=User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36")
 
-        self.driver =  webdriver.Chrome("/home/vaqasa1/chromedriver", options=options)
+        self.driver =  webdriver.Chrome("~/chromedriver", options=options)
         self.driver.get("https://web.whatsapp.com/")
 
         WaSender.instance_num += 1
@@ -90,8 +90,8 @@ class WaSender:
                 image_xpath = "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[1]/button/input"
                 doc_xpath = "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[4]/button/input"
 
-                img = f"/home/ubuntu/Whatsapp_sender/flask_app/static/{self.file}"
-                doc = "/home/ubuntu/Whatsapp_sender/flask_app/static/brochure.pdf"
+                img = f"~/static/{self.file}"
+                doc = "~/static/brochure.pdf"
 
                 #send image
                 clip_button.click()

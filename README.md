@@ -19,3 +19,6 @@ pip3 install --no-cache-dir selenium==3.141.0 jupyter notebook
 
 #Download proj
 git clone https://github.com/pytholabsbot1/wa_sender.git
+mkdir ~/wa_sender/templates
+mv ~/wa_sender/index.html  ~/wa_sender/templates/index.html
+cd ~/wa_sender

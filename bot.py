@@ -3,8 +3,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
-import time
+import time,os
 from selenium.webdriver.chrome.options import Options
+
+
+home_dir = os.path.expanduser("~")
+
 
 class WaSender:
      
@@ -27,14 +31,14 @@ class WaSender:
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("disable-infobars")
+        options.add_argument("--disable-infobars")
         options.add_argument("--disable-extensions")
         options.add_argument(
             f"user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"
         )
         options.add_argument("user-agent=User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36")
 
-        self.driver =  webdriver.Chrome("~/chromedriver", options=options)
+        self.driver =  webdriver.Chrome(home_dir+"/chromedriver", options=options)
         self.driver.get("https://web.whatsapp.com/")
 
         WaSender.instance_num += 1
@@ -90,8 +94,8 @@ class WaSender:
                 image_xpath = "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[1]/button/input"
                 doc_xpath = "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[4]/button/input"
 
-                img = f"~/static/{self.file}"
-                doc = "~/static/brochure.pdf"
+                img = home_dir+f"/static/{self.file}"
+                doc = home_dir+"/static/brochure.pdf"
 
                 #send image
                 clip_button.click()

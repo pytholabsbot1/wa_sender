@@ -1,6 +1,6 @@
 from flask import Flask, render_template, send_file, request
 from bot import WaSender
-from threading 
+from threading
 
 app = Flask(__name__)
 

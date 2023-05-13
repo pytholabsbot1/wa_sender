@@ -94,8 +94,8 @@ class WaSender:
                 image_xpath = '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div/div/ul/li[1]/button/input'
                 doc_xpath = "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div[1]/div/ul/li[4]/button/input"
 
-                img = home_dir+f"/static/{self.file}"
-                doc = home_dir+"/static/brochure.pdf"
+                img = home_dir+f"/wa_sender/static/{self.file}"
+                doc = home_dir+"/wa_sender/static/brochure.pdf"
 
                 #send image
                 clip_button.click()
@@ -121,7 +121,7 @@ class WaSender:
                 # send_button = self.wait.until( lambda driver: driver.find_element_by_css_selector("._1w1m1"))
                 # send_button.click()
 
-                time.sleep(6)
+                time.sleep(9)
 
                 print(f"sent ---> {mob}")
                 self.logs.append(f"sent ---> {mob}")
@@ -135,5 +135,3 @@ class WaSender:
                 self.errors.append(mob)
 
         self.status = "Sending Complete"
-
-

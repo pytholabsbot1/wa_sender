@@ -65,10 +65,10 @@ if __name__ == "__main__":
 
     logging.basicConfig(filename="error.log", level=logging.DEBUG)
     
-    threading.Thread(target=lambda: app.run(host='0.0.0.0', port=8000 ,debug=True, use_reloader=False)).start()
+    app.run(host='0.0.0.0', port=8000 ,debug=True, use_reloader=False)
     
-    while True:
-        try:
-            eval(input("command: "))
-        except Exception as e:
-            print(e)
+#     while True:
+#         try:
+#             eval(input("command: "))
+#         except Exception as e:
+#             print(e)

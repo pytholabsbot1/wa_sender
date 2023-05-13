@@ -68,4 +68,7 @@ if __name__ == "__main__":
     threading.Thread(target=lambda: app.run(host='0.0.0.0', port=8000 ,debug=True, use_reloader=False)).start()
     
     while True:
-        eval(input("command: "))
+        try:
+            eval(input("command: "))
+        except Exception as e:
+            print(e)

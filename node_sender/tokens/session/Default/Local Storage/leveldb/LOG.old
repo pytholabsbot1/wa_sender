@@ -1,0 +1,6 @@
+2023/08/03-10:34:12.971 45f53 Reusing MANIFEST /home/ubuntu/node_exp/tokens/session/Default/Local Storage/leveldb/MANIFEST-000001
+2023/08/03-10:34:12.971 45f53 Recovering log #3
+2023/08/03-10:34:12.972 45f53 Reusing old log /home/ubuntu/node_exp/tokens/session/Default/Local Storage/leveldb/000003.log 
+2023/08/03-22:24:22.512 45f55 Level-0 table #5: started
+2023/08/03-22:24:22.514 45f55 Level-0 table #5: 16341 bytes OK
+2023/08/03-22:24:22.516 45f55 Delete type=0 #3

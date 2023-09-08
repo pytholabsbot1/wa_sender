@@ -1,7 +1,26 @@
 #!/bin/bash
 
+
+## MAIN SETUP For Ubuntu 20 LTS
+
 # Install required packages and set up environment
 sudo apt-get update && sudo apt-get install -y wget curl unzip xvfb libxi6 libgconf-2-4
+
+# Get nvm
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+nvm install node
+nvm use node
+
+## Install npm Packages 
+npm install express body-parser openai @wppconnect-team/wppconnect sqlite3
+
+# Install Chrome 
+wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+
+## Run test3.js
+    
+--------------------------------
 
 # Install Chrome WebDriver
 wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
